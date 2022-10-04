@@ -1,8 +1,6 @@
 import numpy as np
 from fastapi import FastAPI
 import pickle
-
-import h11
 from base import linear_model
 
 app = FastAPI()
@@ -24,4 +22,4 @@ def prediction(data:linear_model):
     State_New_York = data['State_New_York']
 
     result = model.predict(np.array([R_D,Administration,Marketing,State_California,State_Florida,State_New_York]).reshape(1,-1))
-    return f'The profit of the startup is {result}'
+    return f'The profit of the startup is {result[0]}'
